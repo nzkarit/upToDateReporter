@@ -39,7 +39,9 @@ class Smarty_Header {
         $this->assign('appName', $this->config->appName);
         $this->assign('appVersion', $this->config->appVersion);
         $this->assign('baseURL', $this->config->getSiteBaseURL());
-        
+        $this->assign('showGoogleAnalytics', $this->config->getShowGoogleAnalytics());
+        $this->assign('googleAnaylticsCode', $this->config->getGoogleAnaylticsCode());
+        $this->assign('googleAnaylticsSiteName', $this->config->getGoogleAnaylticsSiteName());
 
         $this->smarty->template_dir = $this->config->getSmartyTemplateDir();
         $this->smarty->compile_dir = $this->config->getSmartyCompileDir();

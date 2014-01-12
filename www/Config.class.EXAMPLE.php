@@ -62,6 +62,12 @@ class Config {
     var $appName = 'Up To Date Reporter';
     var $appVersion = '0.01';
     
+    /**
+    * Details for Google Analytics
+    */
+    var $showGoogleAnalytics = false;
+    var $googleAnaylticsCode = 'UA-xxxxxxxx-1';
+    var $googleAnaylticsSiteName = 'example.com';
     
     //TODO Plumb in 
     var $readOnlyMode = false;
@@ -69,8 +75,6 @@ class Config {
     var $bitcoinAddress = '';
     var $showGoogleAdSense = true;
     var $googleAdSenseCode = '';
-    var $showGoogleAnalytics = true;
-    var $googleAnaylticsCode = '';
     var $showDonationPage = true;
     var $useReCaptcha = false;
     var $reCaptchaPrivateKey = '';
@@ -125,5 +129,17 @@ class Config {
     function getFromEmailAddress(){
         return $this->fromEmailAddress;
     }
- }
+    
+    function getShowGoogleAnalytics(){
+        return $this->showGoogleAnalytics;
+    }
+    
+    function getGoogleAnaylticsCode(){
+        return $this->googleAnaylticsCode;
+    }
+    
+    function getGoogleAnaylticsSiteName(){
+        return $this->googleAnaylticsSiteName;
+    }
+}
 ?>
