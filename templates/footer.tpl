@@ -19,11 +19,21 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
 
 			    </div> <!-- content -->
 	            <div id="ad">
-	                <img src="ad-160x600.png" alt="ad place holder" />
+	                {if showGoogleAdSense}
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:inline-block;width:160px;height:600px"
+                             data-ad-client="{$googleAdSenseClient}"
+                             data-ad-slot="{$googleAdSenseSlot}"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    {/if}
 	            </div> <!-- ad -->
 	        </div><!-- content wrapper -->
 		    <div id="footer">
 			    <p>&copy; 2014 David Robinson</p>
+			    <p>Contact: {$contactEmailAddress}</p>
 		    </div>	<!-- footer -->
 		</div> <!-- container -->
 		{if $showGoogleAnalytics}

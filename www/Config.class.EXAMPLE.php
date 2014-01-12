@@ -59,6 +59,13 @@ class Config {
     */
     var $fromEmailAddress = 'noreply@example.com';
     
+    /**
+    * The email address that used for contacting
+    *
+    * This is shown in clear text so obfuscate it
+    */
+    var $contactEmailAddress = 'contact AT example DOT com';
+    
     var $appName = 'Up To Date Reporter';
     var $appVersion = '0.01';
     
@@ -69,12 +76,17 @@ class Config {
     var $googleAnaylticsCode = 'UA-xxxxxxxx-1';
     var $googleAnaylticsSiteName = 'example.com';
     
+    /**
+    * Details for Google AdSense
+    */
+    var $showGoogleAdSense = true;
+    var $googleAdSenseClient = 'ca-pub-xxxxxxxxxxxxxxxx';
+    var $googleAdSenseSlot = 'xxxxxxxxxx';
+    
     //TODO Plumb in 
     var $readOnlyMode = false;
     var $showBitcoinAd = true;
-    var $bitcoinAddress = '';
-    var $showGoogleAdSense = true;
-    var $googleAdSenseCode = '';
+    var $bitcoinAddress = '';    
     var $showDonationPage = true;
     var $useReCaptcha = false;
     var $reCaptchaPrivateKey = '';
@@ -140,6 +152,22 @@ class Config {
     
     function getGoogleAnaylticsSiteName(){
         return $this->googleAnaylticsSiteName;
+    }
+    
+    function getContactEmailAddress(){
+        return $this->contactEmailAddress;
+    }
+    
+    function getShowGoogleAdSense(){
+        return $this->showGoogleAdSense;
+    }    
+    
+    function getGoogleAdSenseClient(){
+        return $this->googleAdSenseClient;
+    }    
+    
+    function getGoogleAdSenseSlot(){
+        return $this->googleAdSenseSlot;
     }
 }
 ?>

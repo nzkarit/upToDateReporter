@@ -42,6 +42,10 @@ class Smarty_Header {
         $this->assign('showGoogleAnalytics', $this->config->getShowGoogleAnalytics());
         $this->assign('googleAnaylticsCode', $this->config->getGoogleAnaylticsCode());
         $this->assign('googleAnaylticsSiteName', $this->config->getGoogleAnaylticsSiteName());
+        $this->assign('contactEmailAddress', $this->config->getContactEmailAddress());
+        $this->assign('showGoogleAdSense', $this->config->getShowGoogleAdSense());
+        $this->assign('googleAdSenseClient', $this->config->getGoogleAdSenseClient());
+        $this->assign('googleAdSenseSlot', $this->config->getGoogleAdSenseSlot());
 
         $this->smarty->template_dir = $this->config->getSmartyTemplateDir();
         $this->smarty->compile_dir = $this->config->getSmartyCompileDir();
