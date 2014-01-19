@@ -33,7 +33,7 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
 	        </div><!-- content wrapper -->
 		    <div id="footer">
 			    <p>&copy; 2014 David Robinson</p>
-			    <p>Contact: {$contactEmailAddress}</p>
+			    <p>Contact: {$contactEmailAddress} <a href="https://twitter.com/uptodatereport">@uptodatereport</a></p>
 		    </div>	<!-- footer -->
 		</div> <!-- container -->
 		{if $showGoogleAnalytics}

@@ -26,6 +26,7 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
     </tr>
 </table>
 <p>{if $logged_in}<p><a href="add_new_library_to_application.php?id={$application_id}">Add New Library to Application</a> |{/if} <a href="view_application_csv.php?id={$application_id}">Export to CSV</a></p>
+<p>The report in the future will include the number fixes and security fixes you are missing.</p>
 <table border="1">
     <tr>
         <th>Library Name</th>

@@ -50,7 +50,7 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
                         <label for="version_number_of_fixes">Number of fixes (total): </label>
                     </td>
                     <td>
-                        <input id="version_number_of_fixes" name="version_number_of_fixes" type="text" maxlength="3" value="0" />
+                        <input id="version_number_of_fixes" name="version_number_of_fixes" type="text" maxlength="3" value="0" /> (This number in the future will added to reported and summed between the current version and the version you are using to give a feeling of how bad it is. The number of fixed includes the number of security fixes.)
                     </td>
                 </tr>
                 <tr>
@@ -58,7 +58,7 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
                         <label for="version_number_of_security_fixes">Number of Security fixes (just ones labeled as security): </label>
                     </td>
                     <td>
-                        <input id="version_number_of_security_fixes" name="version_number_of_security_fixes" type="text" maxlength="3" value="0" />
+                        <input id="version_number_of_security_fixes" name="version_number_of_security_fixes" type="text" maxlength="3" value="0" /> (This number in the future will added to reported and summed between the current version and the version you are using to give a feeling of how bad it is.)
                     </td>
                 </tr>
             </table>

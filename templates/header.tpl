@@ -28,7 +28,7 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
 		    <div id="header">
 		        <h1>{$appName} - {$title}</h1>
 		    	<p>
-		    	<a href="index.php">Home</a> 
+		    	    <a href="index.php">Home</a> 
 		        	| <a href="list_libraries.php">List Libraries</a> 
 		        	{if $logged_in}
 		        	    | <a href="list_applications.php">List Applications</a> 
@@ -42,6 +42,7 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
 		        	{if !$logged_in}| <a href="login.php">Login</a> {/if}
 		        	{if $logged_in}| <a href="change_password.php">Change Password</a> {/if}
 		        	{if $logged_in}| <a href="logout.php">Logout</a> {/if}
+		        	| <a href="roadmap.php">Roadmap</a>
 		    	</p>		    	
 		    </div> <!-- header -->
 		    <div id="contentwrapper">
