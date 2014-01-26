@@ -23,7 +23,7 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
 
 <p>Some ideas for the future are:
 <ul>
-    <li>Add the number of fixes to the report</li>
+    <li><del>Add the number of fixes to the report</del> (Completed 2014-01-26)</li>
     <li>Editing of versions and libraries</li>
     <li>Database Dump and/or API so can keep your own instances up to date and a read only mode for library and versions to tie in with this</li>
     <li>Edit user, change email, make moderator, make admin etc</li>

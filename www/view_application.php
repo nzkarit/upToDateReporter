@@ -46,7 +46,7 @@
     
     
     $query = <<<'EOT'
-        SELECT al.applib_id, al.applib_description, l.library_name, l.library_eol, library_eol_date, v.version_name, v.version_release_date, v2.version_name, v2.version_release_date, v3.version_name, v3.version_release_date
+        SELECT al.applib_id, al.applib_description, l.library_name, l.library_eol, library_eol_date, v.version_name, v.version_release_date, v2.version_name, v2.version_release_date, v3.version_name, v3.version_release_date, v4.version_number_of_fixes, v4.version_number_of_security_fixes
 	        FROM applib al
 		        JOIN application a ON al.application_id = a.application_id
 		        LEFT OUTER JOIN version v ON al.version_id = v.version_id
@@ -71,18 +71,28 @@
 							        GROUP BY v2.library_id) v2 
 						        ON v.version_release_date = v2.version_release_date AND v.library_id = v2.library_id) v3
 			        ON v.library_id = v3.library_id
+			    LEFT OUTER JOIN (SELECT v.library_id, v2.version_number_of_fixes, v2.version_number_of_security_fixes
+				        FROM version v
+					        JOIN (SELECT v.library_id, v.version_id, SUM(v2.version_number_of_fixes) version_number_of_fixes,  SUM(v2.version_number_of_security_fixes) version_number_of_security_fixes
+							        FROM applib al
+								        JOIN version v ON al.version_id = v.version_id
+								        JOIN version v2 ON v.library_id = v2.library_id
+							        WHERE v.version_release_date < v2.version_release_date AND al.application_id = ?
+							        GROUP BY v2.library_id) v2 
+						        ON v.version_id = v2.version_id) v4
+					ON v.library_id = v4.library_id
 	        WHERE al.application_id = ? AND a.user_id = ?
 	        ORDER BY l.library_name, al.applib_description;
 EOT;
 
     $statement = $connection->prepare($query);
     //print_r($connection->error_list);
-    $statement->bind_param('iiii', $application_id, $application_id, $application_id, $user_id);
+    $statement->bind_param('iiiii', $application_id, $application_id, $application_id, $application_id, $user_id);
     $application_id = $id;
     $user_id = $_SESSION['user_id'];
     $statement->execute();
     //The next release refers to the version that came after the current in use one i.e. the first one to superseed it
-    $statement->bind_result($applib_id, $applib_description, $library_name, $library_eol, $library_eol_date, $current_version_name, $current_version_release_date, $latest_version_name, $latest_version_release_date, $next_version_name, $next_version_release_date);
+    $statement->bind_result($applib_id, $applib_description, $library_name, $library_eol, $library_eol_date, $current_version_name, $current_version_release_date, $latest_version_name, $latest_version_release_date, $next_version_name, $next_version_release_date, $number_fixes, $number_security_fixes);
     $uses = array();
     while($statement->fetch()){
         $days = null;
@@ -101,7 +111,7 @@ EOT;
             $interval = $date_next_version->diff($date_now);
             $days = $interval->format('%a');
         }
-        $row = array('applib_id' => $applib_id, 'applib_description' => $applib_description, 'library_name' => $library_name, 'library_eol' => $library_eol, 'library_eol_date' => $library_eol_date, 'current_version_name' => $current_version_name, 'current_version_release_date' => $current_version_release_date, 'latest_version_name' => $latest_version_name, 'latest_version_release_date' => $latest_version_release_date, 'next_version_name' => $next_version_name, 'next_version_release_date' => $next_version_release_date, 'days' => $days);
+        $row = array('applib_id' => $applib_id, 'applib_description' => $applib_description, 'library_name' => $library_name, 'library_eol' => $library_eol, 'library_eol_date' => $library_eol_date, 'current_version_name' => $current_version_name, 'current_version_release_date' => $current_version_release_date, 'latest_version_name' => $latest_version_name, 'latest_version_release_date' => $latest_version_release_date, 'next_version_name' => $next_version_name, 'next_version_release_date' => $next_version_release_date, 'days' => $days, 'number_fixes' => $number_fixes, 'number_security_fixes' => $number_security_fixes);
         array_push($uses, $row);
     }
     $statement->close();

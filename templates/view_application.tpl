@@ -26,7 +26,6 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
     </tr>
 </table>
 <p>{if $logged_in}<p><a href="add_new_library_to_application.php?id={$application_id}">Add New Library to Application</a> |{/if} <a href="view_application_csv.php?id={$application_id}">Export to CSV</a></p>
-<p>The report in the future will include the number fixes and security fixes you are missing.</p>
 <table border="1">
     <tr>
         <th>Library Name</th>
@@ -37,6 +36,8 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
         <th>Latest Version Release Date</th>
         <th>Up to Date</th>
         <th>Days since used version no longer the latest</th>
+        <th>Number of Fixes</th>
+        <th>Number of Security Fixes</th>
         {if $logged_in}
             <th>Edit</th>
             <th>Delete</th>
@@ -60,6 +61,8 @@ along with Up To Date Reporter.  If not, see <http://www.gnu.org/licenses/>.
                 {/if}
             </td>
             <td>{$row.days}</td>
+            <td>{$row.number_fixes}</td>
+            <td>{$row.number_security_fixes}</td>
             {if $logged_in}
                 <td><a href="edit_application_library_version.php?id={$row.applib_id}">Edit</a></td>
                 <td>
